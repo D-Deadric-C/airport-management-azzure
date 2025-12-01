@@ -25,12 +25,22 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
 
-      - name: Zip application
+      - name: Create deployment folder ONLY with app files
         run: |
-          zip -r release.zip .
-          ls -l
+          mkdir deploy
+          cp app.py deploy/
+          cp -r instance deploy/
+          cp -r static deploy/ 2>/dev/null || true
+          cp -r templates deploy/ 2>/dev/null || true
+          cp airports.json deploy/
+          cp requirements.txt deploy/
+
+      - name: Zip deployment folder
+        run: |
+          cd deploy
+          zip -r ../release.zip .
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
