@@ -1,0 +1,7 @@
+[
+  {"code": "DEL", "city": "Delhi", "country": "India"},
+  {"code": "BOM", "city": "Mumbai", "country": "India"},
+  {"code": "DXB", "city": "Dubai", "country": "UAE"},
+  {"code": "LHR", "city": "London", "country": "UK"},
+  {"code": "JFK", "city": "New York", "country": "USA"}
+]
